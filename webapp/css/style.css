@@ -1,0 +1,38 @@
+/* Enter your custom styles here */
+
+.sapUiFormM:not(.sapUiFormEdit)>.sapUiFormResGrid>div:not(.sapMTB) {
+	  padding-bottom: 0rem;
+}
+
+.sapMPanelContent {
+	padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+}
+
+.sapUiFormResGrid>div {
+    padding: 0.3rem 0.3rem;
+}
+
+/*[data-color="green"] {*/
+/*	background-color: green !important;*/
+	
+/*}*/
+
+.selectedCell {
+	border: 1px solid blue !important;
+	
+}
+
+.separarTabelaRisco {
+	background-color: white !important;
+    border-left: 1px solid #e5e5e5 !important;
+    border-right: 1px solid #e5e5e5 !important;
+}
+#__column18 {
+	background-color: white !important;
+    border-left: 1px solid #e5e5e5 !important;
+    border-right: 1px solid #e5e5e5 !important;
+}
+
+/*.sapMLIBShowSeparator>td {*/
+/*	border-top: 0px !important;*/
+/*}*/

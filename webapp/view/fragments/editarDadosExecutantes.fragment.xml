@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Editar Dados dos Executante" id="dialogEditarExecutante">
+		<VBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Efetivo" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Empresa" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+		</VBox>
+		<beginButton>
+			<Button text="Editar" type="Emphasized" press="dialogEditarExecutanteConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="dialogEditarExecutanteClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

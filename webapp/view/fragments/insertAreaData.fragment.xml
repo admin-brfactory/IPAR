@@ -1,0 +1,58 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Inserir Dados Da Área" id="dialogInserAreaData" contentHeight="20em" contentWidth="30rem">
+		<VBox width="100%">
+			<VBox class="sapUiTinyMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<Label width="13rem" text="{i18n>unidade}" class="sapUiSmallMarginTop"/>
+					<Input value="{oView1>/unidadeValueTitle}" class="sapUiSmallMarginBegin" showValueHelp="true" valueHelpRequest=".onInserirDadosAreaUnidade"
+						showSuggestion="true" suggestionItems="{oView1>/filtroUnidadeValue}" suggestionItemSelected="itemSelectedAreaChange"
+						submit="onSubmitAreaChange">
+						<suggestionItems>
+							<core:Item text="{oView1>Werks}"/>
+						</suggestionItems>
+					</Input>
+				</HBox>
+			</VBox>
+			<VBox class="sapUiTinyMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<Label width="13rem" text="{i18n>area}" class="sapUiSmallMarginTop"/>
+					<Input value="{oView1>/areaValue}" class="sapUiSmallMarginBegin" showValueHelp="true" valueHelpRequest=".onAbrirInserirDadosDaArea"/>
+				</HBox>
+			</VBox>
+			<VBox class="sapUiTinyMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<Label text="{i18n>localInst}" width="13rem" class="sapUiSmallMarginTop"/>
+					<Input value="{oView1>/localInstValue2}" class="sapUiSmallMarginBegin" showValueHelp="true" valueHelpRequest=".onAbrirLocalInstValueHelp"/>
+				</HBox>
+			</VBox>
+			<VBox class="sapUiTinyMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<Label text="{i18n>dtLocal}" width="13rem" class="sapUiSmallMarginTop"/>
+					<Input width="13.5rem" value="{oView1>/dtLocalValue}" class="sapUiSmallMarginBegin" showValueHelp="true" valueHelpRequest=".onAbriDtLocalInstValueHelp"/>
+				</HBox>
+			</VBox>
+			<VBox class="sapUiTinyMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<Label text="{i18n>atividade}" width="13rem" class="sapUiSmallMarginTop"/>
+					<TextArea width="13.5rem" maxLength="500" growing="true" value="{oView1>/atividadeValue}" class="sapUiSmallMarginBegin"/>
+				</HBox>
+			</VBox>
+			<VBox class="sapUiTinyMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<Label text="{i18n>tpAtividade}" width="13rem" class="sapUiSmallMarginTop"/>
+					<Select width="13.5rem" class="sapUiSmallMarginBegin" selectedKey="{oView1>/tpAtividadeValue}" forceSelection="false">
+						<core:Item key="Manutenção" text="Manutenção"/>
+						<core:Item key="Operação" text="Operação"/>
+						<core:Item key="Investimento" text="Investimento"/>
+					</Select>
+				</HBox>
+			</VBox>
+		</VBox>
+		<beginButton>
+			<Button text="{i18n>inserir}" type="Emphasized" press="dialogInserAreaDataConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>fechar}" press="dialogInserAreaDataClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="dtLocalPopover"
+		title="Detalhamento do Local"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom"
+		contentWidth="25rem">
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					text="Fechar"
+					press="fecharPopOver" />
+			</OverflowToolbar>
+		</footer>
+		<Text text="{oView1>/dtLocalPopover}" />
+	</Popover>
+</core:FragmentDefinition>

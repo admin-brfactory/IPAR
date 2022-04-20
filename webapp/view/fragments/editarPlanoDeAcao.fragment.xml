@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Editar Plano de Ação" id="dialogEditarPlano">
+		<VBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label width="8.7rem" text="Tipo de Ação" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label width="8.7rem" text="Descrição de Ação" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Esforço" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Impacto" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Prioridade" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Responsável" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+		</VBox>
+		<beginButton>
+			<Button text="Editar" type="Emphasized" press="dialogEditarPlanoConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="dialogEditarPlanoClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

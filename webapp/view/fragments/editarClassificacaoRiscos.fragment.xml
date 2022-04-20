@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Editar Classificação do Risco" id="dialogEditarClassificacao">
+		<VBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Gravidade&#10;(Automático)" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Número de pessoas&#10;envolvidas na atividade" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Tempo de duração&#10;da atividade (em horas)" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Frequência de realização de atividade" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Risco Potencial (automático)" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Risco Real" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+		</VBox>
+		<beginButton>
+			<Button text="Editar" type="Emphasized" press="dialogEditarClassificacaoConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="dialogEditarClassificacaoClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="danoPotencialListDialog" 
+	title="Lista Danos Potenciais" 
+	items="{oView1>/danoPotencialValue}"
+	confirm="_inserirDadosDanoPotencialDialogHelpConfirm" 
+	cancel="._inserirDadosAreaUnidadeDialogHelpClose"
+	liveChange="_searchTipoPerigoList">
+		<StandardListItem 
+			iconDensityAware="false" 
+			iconInset="false" 
+			title="{oView1>TIPO_PERIGO}"
+			key="{oView1>GRAVIDADE}"
+			description="{oView1>DESCRICAO}">
+		</StandardListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

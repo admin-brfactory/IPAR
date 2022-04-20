@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Revalidação da Atividade" id="dialogRevalidar">
+		<VBox class="sapUiSmallMarginBeginEnd">
+			<VBox>
+				<Text
+					text="{i18n>revalidarText}"/>
+				<VBox alignItems="Center" class="sapUiSmallMarginTop">
+					<Button text="{i18n>revalidarAtividade}" icon="sap-icon://synchronize" type="Ghost" press="dialogRevalidarSegTabClose"/>
+				</VBox>
+			</VBox>
+			<VBox class="sapUiSmallMarginTop">
+				<Text
+					text="{i18n>revalidarText2}"/>
+				<VBox alignItems="Center" class="sapUiTinyMarginTop">
+					<Button text="{i18n>voltar}" icon="sap-icon://undo" type="Ghost" press="dialogRevalidarSegTabClose"/>
+				</VBox>
+			</VBox>
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>

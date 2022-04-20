@@ -1,0 +1,530 @@
+<mvc:View controllerName="com.arcelormittal.ipar.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:w="sap.ui.integration.widgets" xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar">
+	<App>
+		<pages>
+			<Page title="{i18n>title}" showHeader="false">
+				<content>
+					<Panel>
+						<form:SimpleForm id="filtroDeAtividades" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+							adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3"
+							singleContainerFullSize="true">
+							<!--<form:toolbar>-->
+							<!--	<Toolbar id="TB1">-->
+							<!--		<ToolbarSpacer/>-->
+							<!--		<Button icon="sap-icon://bar-chart" type="Ghost" width="5rem" tooltip="Gerar relatório BW"/>-->
+							<!--	</Toolbar>-->
+							<!--</form:toolbar>-->
+							<form:content>
+								<core:Title text="{i18n>filtroAtividades}"/>
+								<Label text="{i18n>unidade}" class="sapUiTinyMarginTop"/>
+								<MultiInput id="unidadeMultiInput" showValueHelp="true" valueHelpRequest="onUnidadeValueHelp" tokenUpdate="onTokenRemoveUnidade"/>
+								<Label text="{i18n>localInst}" class="sapUiTinyMarginTop"/>
+								<MultiInput id="localInstMultiInput" enabled="{oView1>/localInstEnabled}"
+									tooltip="{= ${oView1>/localInstEnabled} === false ? ${i18n>tooltip_text} : '' }" showValueHelp="true" valueHelpRequest="onLocalInst"/>
+								<Label text="{i18n>buscaAtivi}" class="sapUiTinyMarginTop"/>
+								<Input id="buscaAtividade" enabled="{oView1>/buscaAtividadeEnabled}" liveChange="buscaAtividadeChange"/>
+								<Label text="{i18n>area}" class="sapUiTinyMarginTop"/>
+								<MultiInput id="areaMultiInput" enabled="{oView1>/areaEnabled}" tooltip="{= ${oView1>/areaEnabled} === false ? ${i18n>tooltip_text} : '' }"
+									showValueHelp="true" valueHelpRequest="onAreaHelpValue"/>
+								<core:Title text="{i18n>filtroRisco}"/>
+								<Label text="{i18n>nivelRisco}" class="sapUiTinyMarginTop"/>
+								<Select selectedKey="{relatorioView>/dadosPessoais/DESC_EMP}" forceSelection="false" change="buscarLocalInstalacao" items="" width="20rem">
+									<core:Item key="" text=""/>
+									<core:Item key="" text="Pouquíssimo provável"/>
+									<core:Item key="" text="Pouco provável"/>
+									<core:Item key="" text="Provável"/>
+									<core:Item key="" text="Bem provável"/>
+									<core:Item key="" text="Muito provável"/>
+								</Select>
+								<core:Title text="{i18n>filtroAcoes}"/>
+								<Label text="{i18n>status}" class="sapUiTinyMarginTop"/>
+								<Input/>
+								<Label text="{i18n>responsavel}" class="sapUiTinyMarginTop"/>
+								<Input/>
+								<Label text="{i18n>vencimento}" class="sapUiTinyMarginTop"/>
+								<DateRangeSelection id="dataVencimento" displayFormat="MM/yyyy"/>
+							</form:content>
+						</form:SimpleForm>
+						<HBox justifyContent="End">
+							<Button icon="sap-icon://search" press="onFilter" class="sapUiSmallMarginEnd"/>
+							<Button icon="sap-icon://bar-chart" type="Ghost" tooltip="Gerar relatório BW"/>
+						</HBox>
+					</Panel>
+					<HBox>
+						<VBox width="70%" class="sapUiSmallMarginBegin">
+							<f:GridContainer class="sapUiSmallMarginTop">
+								<f:Card>
+									<f:layoutData>
+										<f:GridContainerItemLayoutData columns="30"/>
+									</f:layoutData>
+									<f:content>
+										<HBox width="100%">
+											<VBox width="100%">
+												<VBox>
+													<OverflowToolbar>
+														<Title text="{i18n>dadosAtividade}" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+														<ToolbarSpacer/>
+														<Button text="{i18n>inserirDadosArea}" icon="sap-icon://add" type="Ghost" press="onInserAreaData('dadosAtividades')"/>
+														<Button text="{i18n>revalidar}" icon="sap-icon://synchronize" type="Ghost" press="onRevalidar('dadosAtividades')"/>
+														<Button text="{i18n>editarDadosArea}" icon="sap-icon://edit" type="Ghost" press="onEditarDados('dadosAtividades')"/>
+														<Button text="{i18n>excluirDados}" icon="sap-icon://decline" type="Ghost" press="onExluirDados"/>
+													</OverflowToolbar>
+													<Table id="dadosDasAtividadesTable" items="{oView1>/tableDadosDasAtividades}" mode="MultiSelect" select="linhaSelecionada">
+														<headerToolbar>
+															<OverflowToolbar>
+																<content>
+																	<Title text="{i18n>caracterizaçãoAtividade}" titleStyle="H4"/>
+																	<ToolbarSpacer/>
+																	<Title text="{i18n>dadosExecutantes}" titleStyle="H4"/>
+																</content>
+															</OverflowToolbar>
+														</headerToolbar>
+														<columns>
+															<Column hAlign="Center" width="3rem" minScreenWidth="Desktop" demandPopin="true">
+																<Text text="{i18n>unidade}"/>
+															</Column>
+															<Column hAlign="Center" width="2rem" minScreenWidth="Desktop" demandPopin="true">
+																<Text text="{i18n>area}"/>
+															</Column>
+															<Column hAlign="Center" width="5rem" minScreenWidth="Desktop" demandPopin="true">
+																<Text text="{i18n>localInst}"/>
+															</Column>
+															<Column hAlign="Center" width="5rem" minScreenWidth="Desktop" demandPopin="true">
+																<Text text="{i18n>dtLocal}"/>
+															</Column>
+															<Column hAlign="Center" width="10em" minScreenWidth="Desktop" demandPopin="true">
+																<Text text="{i18n>atividade}"/>
+															</Column>
+															<Column hAlign="Center" width="5rem" minScreenWidth="Desktop" demandPopin="true">
+																<Text text="{i18n>tpAtividade}"/>
+															</Column>
+															<Column hAlign="Center" width="3rem" minScreenWidth="Desktop" demandPopin="true">
+																<Text text="{i18n>efetivo}"/>
+															</Column>
+															<Column hAlign="Center" width="6rem" minScreenWidth="Desktop" demandPopin="true">
+																<Text text="{i18n>proprio}"/>
+															</Column>
+														</columns>
+														<items>
+															<ColumnListItem>
+																<cells>
+																	<Text text="{oView1>unidadetitle}" textAlign="Center"/>
+																	<Text text="{oView1>area}"/>
+																	<Text text="{oView1>localInst}"/>
+																	<Text text="{oView1>dtLocal}"/>
+																	<Text text="{oView1>atividade}"/>
+																	<Text text="{oView1>tpAtividade}"/>
+																	<Text text="{oView1>efetivo}"/>
+																	<Text text="{oView1>empresa}"/>
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+												</VBox>
+											</VBox>
+											<!--<VBox width="30%" class="sapUiTinyMarginBegin">-->
+											<!--	<Table id="dadosDosExecutantesTable" items="{oView1>/tableDadosDasAtividades}">-->
+											<!--		<headerToolbar>-->
+											<!--			<OverflowToolbar>-->
+											<!--				<content>-->
+											<!--					<Title text="Dados dos Executantes" titleStyle="H4"/>-->
+											<!--				</content>-->
+											<!--			</OverflowToolbar>-->
+											<!--		</headerToolbar>-->
+											<!--		<columns>-->
+											<!--			<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+											<!--				<Text text="Efetivo"/>-->
+											<!--			</Column>-->
+											<!--			<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+											<!--				<Text text="Empresa"/>-->
+											<!--			</Column>-->
+											<!--		</columns>-->
+											<!--		<items>-->
+											<!--			<ColumnListItem>-->
+											<!--				<cells>-->
+											<!--					<Text text="{oView1>efetivo}"/>-->
+											<!--					<Text text="{oView1>empresa}"/>-->
+											<!--				</cells>-->
+											<!--			</ColumnListItem>-->
+											<!--		</items>-->
+											<!--	</Table>-->
+											<!--</VBox>-->
+										</HBox>
+									</f:content>
+								</f:Card>
+							</f:GridContainer>
+						</VBox>
+						<VBox width="40%" visible="true">
+							<f:GridContainer class="sapUiSmallMarginTop">
+								<f:Card>
+									<f:layoutData>
+										<f:GridContainerItemLayoutData columns="30"/>
+									</f:layoutData>
+									<f:content>
+										<VBox width="100%" class="sapUiTinyMarginBegin">
+											<OverflowToolbar>
+												<Title text="" titleStyle="H4"/>
+											</OverflowToolbar>
+											<Table id="indicadoresDeGestaoTable">
+												<headerToolbar>
+													<OverflowToolbar>
+														<content>
+															<Title text="{i18n>indiGestão}" titleStyle="H4"/>
+														</content>
+													</OverflowToolbar>
+												</headerToolbar>
+												<columns>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>riscosSigni}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>acoesAtrasadas}"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem>
+														<cells>
+															<Text text=""/>
+															<Text text=""/>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+										</VBox>
+									</f:content>
+								</f:Card>
+							</f:GridContainer>
+						</VBox>
+					</HBox>
+					<VBox class="sapUiSmallMarginBegin" id="segundaParteTela" visible="false">
+						<f:GridContainer class="sapUiSmallMarginTop" visible="true">
+							<f:layout>
+								<f:GridContainerSettings rowSize="2rem" columnSize="5rem" gap="1rem"/>
+							</f:layout>
+							<f:Card>
+								<f:layoutData>
+									<f:GridContainerSettings rowSize="1rem" columnSize="2rem" gap="1rem"/>
+									<f:GridContainerItemLayoutData columns="30"/>
+								</f:layoutData>
+								<f:content>
+									<VBox width="100%">
+										<OverflowToolbar>
+											<Title text="{i18n>dadosRiscosOcupa}" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+											<ToolbarSpacer/>
+											<Button text="{i18n>inserirDadosArea}" icon="sap-icon://add" type="Ghost" press="onInserAreaData('inserirDadosRiscosOcupacionais')"/>
+											<Button text="{i18n>revalidar}" icon="sap-icon://synchronize" type="Ghost" press="onRevalidar('riscosOcupacionais')"/>
+											<Button text="{i18n>editarDadosArea}" icon="sap-icon://edit" type="Ghost" press="onEditarDados('riscosOcupacionais')"/>
+											<Button text="{i18n>excluirDados}" icon="sap-icon://decline" type="Ghost" press="onExluirDadosTab2"/>
+										</OverflowToolbar>
+										<Table items="{oView1>/segundaTabelaAUX}" id="dadosDosRiscosOcupacionaisTable" mode="MultiSelect">
+											<headerToolbar>
+												<OverflowToolbar>
+													<content>
+														<Title text="{i18n>identificaçãoRiscos}" titleStyle="H4"/>
+														<ToolbarSpacer/>
+														<ToolbarSpacer/>
+														<ToolbarSpacer/>
+														<ToolbarSpacer/>
+														<Title text="{i18n>classifiRiscos}" titleStyle="H4"/>
+														<ToolbarSpacer/>
+														<ToolbarSpacer/>
+														<ToolbarSpacer/>
+													</content>
+												</OverflowToolbar>
+											</headerToolbar>
+											<columns>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>tpPerigo}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>perigo}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>risco}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>descRisco}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>fonte}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>descFonte}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>descDano}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>cargosExpostos}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true" width="1rem">
+													<Text text=""/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>gravidade}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>numeroPessoas}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>tempoDuraçãoAtividade}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>frequenciaAtividade}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>probabil}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>riscoPotencial}"/>
+												</Column>
+												<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+													<Text text="{i18n>riscoReal}"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem>
+													<cells>
+														<Text text="{oView1>TIPO_PERIGO}"/>
+														<Text text="{oView1>PERIGO}"/>
+														<Text text="{oView1>RISCO}"/>
+														<Text text="{oView1>DESC_RISCO}"/>
+														<Text text="{oView1>FONTE_CIRC}"/>
+														<Text text="{oView1>DES_FONT_CIRC_KEY}"/>
+														<Text text="{oView1>DESC_DANO}"/>
+														<Text text="{oView1>CARG_EXPOSTOS}"/>
+														<Text text=""/>
+														<Text text="{oView1>GRAVIDADE}"/>
+														<Text text="{oView1>NUM_PESS_ENV}"/>
+														<Text text="{oView1>DURAC_ATIVIDADE}"/>
+														<Text text="{oView1>FREQ_REAL_ATIV}"/>
+														<Text text="{oView1>PROBABILIDADE}"/>
+														<Text text="{oView1>RISC_POTENCIAL}"/>
+														<Text text="{oView1>riscReal}"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</VBox>
+									<!--de verdade -->
+									<!--<HBox width="100%" visible="true">-->
+									<!--	<VBox width="50%">-->
+									<!--		<OverflowToolbar>-->
+									<!--			<Title text="{i18n>dadosRiscosOcupa}" titleStyle="H2" class="sapUiSmallMarginBegin"/>-->
+									<!--		</OverflowToolbar>-->
+									<!--		<Table items="{oView1>/segundaTabelaAUX}" id="dadosDosRiscosOcupacionaisTable" mode="MultiSelect">-->
+									<!--			<headerToolbar>-->
+									<!--				<OverflowToolbar>-->
+									<!--					<content>-->
+									<!--						<Title text="{i18n>identificaçãoRiscos}" titleStyle="H4"/>-->
+									<!--					</content>-->
+									<!--				</OverflowToolbar>-->
+									<!--			</headerToolbar>-->
+									<!--			<columns>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>tpPerigo}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>perigo}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>risco}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>descRisco}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>fonte}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>descFonte}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>descDano}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>cargosExpostos}"/>-->
+									<!--				</Column>-->
+									<!--			</columns>-->
+									<!--			<items>-->
+									<!--				<ColumnListItem>-->
+									<!--					<cells>-->
+									<!--						<Text text="{oView1>TIPO_PERIGO}"/>-->
+									<!--						<Text text="{oView1>PERIGO}"/>-->
+									<!--						<Text text="{oView1>RISCO}"/>-->
+									<!--						<Text text="{oView1>DESC_RISCO}" wrapping="false"/>-->
+									<!--						<Text text="{oView1>FONTE_CIRC}"/>-->
+									<!--						<Text text="{oView1>DESC_DANO}" wrapping="false"/>-->
+									<!--						<Text text="{oView1>danPotenc}"/>-->
+									<!--						<Text text="{oView1>CARG_EXPOSTOS}"/>-->
+									<!--					</cells>-->
+									<!--				</ColumnListItem>-->
+									<!--			</items>-->
+									<!--		</Table>-->
+									<!--	</VBox>-->
+									<!--	<VBox width="50%" class="sapUiTinyMarginBegin">-->
+									<!--		<OverflowToolbar>-->
+									<!--			<ToolbarSpacer/>-->
+									<!--			<Button text="{i18n>inserirDadosArea}" icon="sap-icon://add" type="Ghost" press="onInserAreaData('inserirDadosRiscosOcupacionais')"/>-->
+									<!--			<Button text="{i18n>revalidar}" icon="sap-icon://synchronize" type="Ghost" press="onRevalidar('riscosOcupacionais')"/>-->
+									<!--			<Button text="{i18n>editarDadosArea}" icon="sap-icon://edit" type="Ghost" press="onEditarDados('riscosOcupacionais')"/>-->
+									<!--			<Button text="{i18n>excluirDados}" icon="sap-icon://decline" type="Ghost" press="onButExcluir"/>-->
+									<!--		</OverflowToolbar>-->
+									<!--		<Table items="{oView1>/segundaTabelaAUX}" id="classificacaoRiscosOcupacionaisTable" mode="MultiSelect">-->
+									<!--			<headerToolbar>-->
+									<!--				<OverflowToolbar>-->
+									<!--					<content>-->
+									<!--						<Title text="{i18n>classifiRiscos}" titleStyle="H4"/>-->
+									<!--					</content>-->
+									<!--				</OverflowToolbar>-->
+									<!--			</headerToolbar>-->
+									<!--			<columns>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>gravidade}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>numeroPessoas}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>tempoDuraçãoAtividade}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>frequenciaAtividade}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>riscoPotencial}"/>-->
+									<!--				</Column>-->
+									<!--				<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">-->
+									<!--					<Text text="{i18n>riscoReal}"/>-->
+									<!--				</Column>-->
+									<!--			</columns>-->
+									<!--			<items>-->
+									<!--				<ColumnListItem>-->
+									<!--					<cells>-->
+									<!--						<Text text="{oView1>GRAVIDADE}"/>-->
+									<!--						<Text text="{oView1>NUM_PESS_ENV}"/>-->
+									<!--						<Text text="{oView1>DURAC_ATIVIDADE}"/>-->
+									<!--						<Text text="{oView1>FREQ_REAL_ATIV}"/>-->
+									<!--						<Text text="{oView1>PROBABILIDADE}"/>-->
+									<!--						<Text text="{oView1>RISC_POTENCIAL}"/>-->
+									<!--						<Text text="{oView1>riscReal}"/>-->
+									<!--					</cells>-->
+									<!--				</ColumnListItem>-->
+									<!--			</items>-->
+									<!--		</Table>-->
+									<!--	</VBox>-->
+									<!--</HBox>-->
+								</f:content>
+							</f:Card>
+						</f:GridContainer>
+					</VBox>
+					<VBox class="sapUiSmallMarginBegin">
+						<f:GridContainer visible="false">
+							<!--<f:layout>-->
+							<!--	<f:GridContainerSettings rowSize="2rem" columnSize="5rem" gap="1rem"/>-->
+							<!--</f:layout>-->
+							<f:Card>
+								<f:layoutData>
+									<f:GridContainerItemLayoutData columns="30"/>
+								</f:layoutData>
+								<f:content>
+									<HBox width="100%">
+										<VBox width="50%">
+											<Table id="controlesOperacionaisTable" mode="MultiSelect">
+												<headerToolbar>
+													<OverflowToolbar>
+														<content>
+															<Title text="{i18n>controlesOperacionais}" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+															<ToolbarSpacer/>
+															<Button text="{i18n>inserirDadosArea}" icon="sap-icon://add" type="Ghost" press="onInserAreaData"/>
+															<Button text="{i18n>revalidar}" icon="sap-icon://synchronize" type="Ghost" press="onRevalidar('controlesOperacionais')"/>
+															<Button text="{i18n>editarDadosArea}" icon="sap-icon://edit" type="Ghost" press="onEditarDados('controlesOperacionais')"/>
+															<Button text="{i18n>excluirDados}" icon="sap-icon://decline" type="Ghost" press="onExluirDados"/>
+														</content>
+													</OverflowToolbar>
+												</headerToolbar>
+												<columns>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>tpControle}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>descControle}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>reduRisco}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>statusControle}"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem>
+														<cells>
+															<Text text=""/>
+															<Text text=""/>
+															<Text text=""/>
+															<Text text=""/>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+										</VBox>
+										<VBox width="50%" class="sapUiTinyMarginBegin">
+											<Table id="planoDeAcaoTable" mode="MultiSelect">
+												<headerToolbar>
+													<OverflowToolbar>
+														<content>
+															<Title text="{i18n>planoAcao}" titleStyle="H2" class="sapUiSmallMarginBegin"/>
+															<ToolbarSpacer/>
+															<Button text="{i18n>inserirDadosArea}" icon="sap-icon://add" type="Ghost" press="onInserAreaData"/>
+															<Button text="{i18n>revalidar}" icon="sap-icon://synchronize" type="Ghost" press="onRevalidar('planoDeAcao')"/>
+															<Button text="{i18n>editarDadosArea}" icon="sap-icon://edit" type="Ghost" press="onEditarDados('planoDeAcao')"/>
+															<Button text="{i18n>excluirDados}" icon="sap-icon://decline" type="Ghost" press="onExluirDados"/>
+														</content>
+													</OverflowToolbar>
+												</headerToolbar>
+												<columns>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>tpAcao}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>descAcao}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>esforco}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>impacto}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>prioridade}"/>
+													</Column>
+													<Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+														<Text text="{i18n>responsavel}"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem>
+														<cells>
+															<Text text=""/>
+															<Text text=""/>
+															<Text text=""/>
+															<Text text=""/>
+															<Text text=""/>
+															<Text text=""/>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+										</VBox>
+									</HBox>
+								</f:content>
+							</f:Card>
+						</f:GridContainer>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
