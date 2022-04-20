@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>dtLocal}"
+		items="{oView1>/dtLocalInst}"
+		confirm="_inserirDtLocalInstDialogHelpConfirm"
+		cancel="_handleValueHelpClose"
+		liveChange="_dtLocalInst"
+		multiSelect="false">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{oView1>LocInstal}"
+			description="{oView1>Descr}" />
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,225 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc">
+	<Dialog title="Inserir Dados Riscos Ocupacionais" id="dialogInserRiscOcupaci" contentHeight="30rem" contentWidth="90rem">
+		<HBox width="100%">
+			<VBox width="43%" class="sapUiSmallMargin">
+				<!--<f:GridContainer width="100%">-->
+				<!--	<f:Card class="sapUiLargeMarginBegin">-->
+				<!--		<f:content>-->
+				<VBox width="100%">
+					<HBox width="100%" class="sapUiTinyMarginTop" alignItems="Center">
+						<VBox>
+							<Text text="{i18n>tipPerig}" width="146px"/>
+						</VBox>
+						<VBox width="250px">
+							<Select selectedKey="" forceSelection="false" change="" items="{oView1>/tipoPerigoListValue}" width="18rem" id="tipoPerigoSelect">
+								<core:Item key="" text=""/>
+								<core:Item key="{oView1>TIPO_PERIGO}" text="{oView1>DESCRICAO}"/>
+							</Select>
+						</VBox>
+					</HBox>
+					<HBox class="sapUiTinyMarginTop" alignItems="Center">
+						<VBox>
+							<Text text="{i18n>perig}" width="146px"/>
+						</VBox>
+						<VBox width="250px">
+							<Select selectedKey="" forceSelection="false" change="" items="{oView1>/perigoListValue}" width="18rem" id="perigoSelect">
+								<core:Item key="" text=""/>
+								<core:Item key="{oView1>PERIGO}" text="{oView1>DESCRICAO}"/>
+							</Select>
+						</VBox>
+					</HBox>
+					<HBox class="sapUiTinyMarginTop" alignItems="Center">
+						<VBox>
+							<Text text="{i18n>risc}" width="146px"/>
+						</VBox>
+						<VBox width="250px">
+							<Select selectedKey="" forceSelection="false" change="" items="{oView1>/riscoListValue}" width="18rem" id="RiscoSelect">
+								<core:Item key="" text=""/>
+								<core:Item key="{oView1>RISCO}" text="{oView1>DESCRICAO}"/>
+							</Select>
+						</VBox>
+					</HBox>
+					<HBox class="sapUiTinyMarginTop" alignItems="Center">
+						<VBox>
+							<Text text="{i18n>descRisc}" width="146px"/>
+						</VBox>
+						<VBox width="250px">
+							<Input id="descRisco"/>
+						</VBox>
+					</HBox>
+					<HBox class="sapUiTinyMarginTop" alignItems="Center">
+						<VBox>
+							<Text text="{i18n>fontCircun}" width="146px"/>
+						</VBox>
+						<VBox width="250px">
+							<Select selectedKey="" forceSelection="false" change="" items="{oView1>/fonteListValue}" width="18rem" id="fontCircSelect">
+								<core:Item key="" text=""/>
+								<core:Item key="{oView1>FONTE}" text="{oView1>DESCRICAO}"/>
+							</Select>
+						</VBox>
+					</HBox>
+					<HBox class="sapUiTinyMarginTop" alignItems="Center">
+						<VBox>
+							<Text text="{i18n>descFontCir}" width="146px"/>
+						</VBox>
+						<VBox width="250px">
+							<Input id="desFontCirc"/>
+						</VBox>
+					</HBox>
+					<HBox class="sapUiTinyMarginTop" alignItems="Center">
+						<VBox>
+							<Text text="{i18n>danPoten}" width="146px"/>
+						</VBox>
+						<VBox width="250px">
+							<Select selectedKey="" forceSelection="false" change="danoPotencialChange" items="{oView1>/danoPotencialValue}" width="18rem"
+								showSecondaryValues="true" id="danPotencSelect">
+								<core:ListItem key="" text="" additionalText=""/>
+								<core:ListItem key="{oView1>GRAVIDADE}" text="{oView1>TIPO_PERIGO}" additionalText="{oView1>DESCRICAO}"/>
+							</Select>
+						</VBox>
+					</HBox>
+					<HBox class="sapUiSmallMarginTop">
+						<VBox class="sapUiSmallMarginEnd">
+							<Text text="{i18n>carexp}" class="sapUiLargeMarginTop" width="146px"/>
+							<Text text="{i18n>selecargex}" class="sapUiSmallMarginTop" width="146px"/>
+						</VBox>
+						<core:Fragment fragmentName="com.arcelormittal.ipar.view.fragments.cargosArea" type="XML"/>
+						<VBox justifyContent="Center" class="sapUiTinyMarginBeginEnd">
+							<Button class="sapUiTinyMarginBottom" icon="sap-icon://navigation-right-arrow" tooltip="Move to selected" press="moveParaCargosExpostos"/>
+							<Button icon="sap-icon://navigation-left-arrow" tooltip="Move to available" press="moveParaCargosDaArea"/>
+						</VBox>
+						<core:Fragment fragmentName="com.arcelormittal.ipar.view.fragments.classRiscPotenc" type="XML"/>
+					</HBox>
+				</VBox>
+				<!--		</f:content>-->
+				<!--	</f:Card>-->
+				<!--</f:GridContainer>-->
+			</VBox>
+			<VBox width="57%" class="sapUiSmallMargin">
+				<HBox class="sapUiTinyMarginTop" alignItems="Center">
+					<VBox>
+						<Text text="{i18n>numpesenv}" width="146px"/>
+					</VBox>
+					<VBox width="250px">
+						<Select selectedKey="" forceSelection="false" change="" items="{oView1>/pessoasEnvValueTabela}" width="18rem" id="numPessoEnvolSelect">
+							<core:Item key="" text=""/>
+							<core:Item key="{oView1>F1}" text="{oView1>DESCRICAO}"/>
+						</Select>
+					</VBox>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop" alignItems="Center">
+					<VBox>
+						<Text text="{i18n>tempDurac}" width="146px"/>
+					</VBox>
+					<VBox width="250px">
+						<Select selectedKey="" forceSelection="false" change="" items="{oView1>/tempoDuracaoValueTabela}" width="18rem" id="tempDuraAtivSelect">
+							<core:Item key="" text=""/>
+							<core:Item key="{oView1>F2}" text="{oView1>DESCRICAO}"/>
+						</Select>
+					</VBox>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop" alignItems="Center">
+					<VBox>
+						<Text text="{i18n>freqRealAtiv}" width="146px"/>
+					</VBox>
+					<VBox width="250px">
+						<Select selectedKey="" forceSelection="false" change="freqRealAtivChange" items="{oView1>/frequenciaValueTabela}" width="18rem"
+							id="freqRealAtivSelect">
+							<core:Item key="" text=""/>
+							<core:Item key="{oView1>F3}" text="{oView1>DESCRICAO}"/>
+						</Select>
+					</VBox>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop" alignItems="Center">
+					<VBox>
+						<Text text="{i18n>gravid}" width="146px"/>
+					</VBox>
+					<VBox width="250px">
+						<Input value="{oView1>/gravidade}" enabled="false" id="gravidade"/>
+					</VBox>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop" alignItems="Center">
+					<VBox>
+						<Text text="{i18n>prob}" width="146px"/>
+					</VBox>
+					<VBox width="250px">
+						<Input enabled="false" id="probabil"/>
+					</VBox>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop" alignItems="Center">
+					<VBox>
+						<Text text="{i18n>riscPot}" width="146px"/>
+					</VBox>
+					<VBox width="250px">
+						<Input enabled="false" id="riscPotencial"/>
+					</VBox>
+				</HBox>
+				<HBox class="sapUiMediumMarginTop">
+					<HBox class="sapUiTinyMarginTop">
+						<Table showNoData="false" enableGrouping="true" selectionMode="MultiToggle" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title"
+							items="{oView1>/tabelaRiscoPotencial}" id="tabelaGravidade">
+							<columns>
+								<Column width="10rem">
+									<Text text="Probabilidade"/>
+								</Column>
+								<Column width="4.5rem">
+									<Text text=""/>
+								</Column>
+								<Column width="4.5rem">
+									<Text text=""/>
+								</Column>
+								<Column width="4.5rem">
+									<Text text=""/>
+								</Column>
+								<Column width="5rem">
+									<Text text="Gravidade"/>
+								</Column>
+								<Column width="4.5rem">
+									<Text text=""/>
+								</Column>
+								<Column width="4.5rem">
+									<Text text=""/>
+								</Column>
+								<Column width="4.55rem">
+									<Text text=""/>
+								</Column>
+								<Column width="4.2rem">
+									<Text text=""/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<Text text="{oView1>Probabilidade}"/>
+									<HBox>
+										<Text text="{oView1>ValCelula1}"/>
+										<customData>
+											<core:CustomData key="color" value="{oView1>CorCelula1}" writeToDom="true"/>
+										</customData>
+									</HBox>
+									<HBox>
+										<Text text="{oView1>ValCelula2}"/>
+										<customData>
+											<core:CustomData key="color" value="{oView1>CorCelula2}" writeToDom="true"/>
+										</customData>
+									</HBox>
+									<Text text="{oView1>ValCelula3}"/>
+									<Text text="{oView1>ValCelula4}"/>
+									<Text text="{oView1>ValCelula5}"/>
+									<Text text="{oView1>ValCelula6}"/>
+									<Text text="{oView1>ValCelula7}"/>
+									<Text text="{oView1>ValCelula8}"/>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</HBox>
+				</HBox>
+			</VBox>
+		</HBox>
+		<beginButton>
+			<Button text="{i18n>inserir}" type="Emphasized" press="dialogInserAreaDataSegTabConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>fechar}" press="dialogInserAreaDataSegTabClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

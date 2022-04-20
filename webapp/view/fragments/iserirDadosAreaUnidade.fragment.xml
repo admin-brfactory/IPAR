@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialog"
+		title="{i18n>unidade}"
+		items="{oView1>/filtroUnidadeValue}"
+		confirm="_inserirDadosAreaUnidadeDialogHelpConfirm"
+		cancel="._inserirDadosAreaUnidadeDialogHelpClose"
+		liveChange="_searchUnidade">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{oView1>Text}"
+			description="{oView1>Werks}" />
+	</SelectDialog>
+</core:FragmentDefinition>

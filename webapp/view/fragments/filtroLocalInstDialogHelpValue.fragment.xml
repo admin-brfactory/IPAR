@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="valueHelpDialog2"
+		title="{i18n>localInst}"
+		items="{oView1>/filtroLocalInstalValue}"
+		confirm="_filtroLocalInstDialogHelpConfirm"
+		cancel="_handleValueHelpClose"
+		liveChange="_searchLocalInst"
+		multiSelect="true">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{oView1>LocInstal}"
+			description="{oView1>Descr}" />
+	</SelectDialog>
+</core:FragmentDefinition>

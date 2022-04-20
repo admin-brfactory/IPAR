@@ -1,0 +1,25 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZSTEHS002_SRV" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="Unidade" sap:content-version="1">
+				<Key><PropertyRef Name="CampoUnidade"/></Key><Property Name="CampoUnidade" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Unidade" sap:creatable="false"
+					sap:updatable="false" sap:filterable="false"/><Property Name="Return" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Return" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="LocalInstalacao" sap:content-version="1">
+				<Key><PropertyRef Name="CampoUnidade"/></Key><Property Name="CampoUnidade" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Unidade" sap:creatable="false"
+					sap:updatable="false" sap:filterable="false"/><Property Name="Return" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Return" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="BuscaAtividade" sap:content-version="1">
+				<Key><PropertyRef Name="Busca"/></Key><Property Name="Busca" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Busca" sap:creatable="false" sap:updatable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="Area" sap:content-version="1">
+				<Key><PropertyRef Name="AreaField"/></Key><Property Name="AreaField" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Area" sap:creatable="false"
+					sap:updatable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZSTEHS002_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="UnidadeSet" EntityType="ZSTEHS002_SRV.Unidade" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="LocalInstalacaoSet" EntityType="ZSTEHS002_SRV.LocalInstalacao" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="BuscaAtividadeSet" EntityType="ZSTEHS002_SRV.BuscaAtividade" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="AreaSet" EntityType="ZSTEHS002_SRV.Area" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/opu/odata/sap/ZSTEHS002_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/opu/odata/sap/ZSTEHS002_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

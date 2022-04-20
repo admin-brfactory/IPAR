@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Editar Identificação do Risco" id="dialogEditarIdentificacao">
+		<VBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Tipo de Perigo" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Perigo" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Risco" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Descrição do&#10;Risco (Campo Aberto)" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Fonte ou&#10;circunstância" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Descrição da Fonte ou Circunstância" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Text text="Descrição do&#10;Dano Potencial" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Cargos Expostos" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+		</VBox>
+		<beginButton>
+			<Button text="Editar" type="Emphasized" press="dialogEditarIdentificacaoConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="dialogEditarIdentificacaoClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

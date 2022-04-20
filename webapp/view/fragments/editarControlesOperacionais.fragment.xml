@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Editar Dados Controles Operacionais" id="dialogEditarControles">
+		<VBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label width="8.7rem" text="Tipo de Controle" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label width="8.7rem" text="Descrição do Controle" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Redução do Risco" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+			<HBox class="sapUiSmallMarginBegin">
+				<Label text="Status do Controle" width="8.7rem" class="sapUiSmallMarginTop"/>
+				<Input  width="90%" class="sapUiSmallMarginBegin"/>
+			</HBox>
+		</VBox>
+		<beginButton>
+			<Button text="Editar" type="Emphasized" press="dialogEditarControlesConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="dialogEditarControlesClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

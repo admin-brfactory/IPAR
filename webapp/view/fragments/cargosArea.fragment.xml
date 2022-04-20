@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns:dnd="sap.ui.core.dnd" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns="sap.m" height="100%">
+	<Table id="tabCargArea" mode="SingleSelectMaster" growing="true" growingThreshold="10" beforeOpenContextMenu="onBeforeOpenContextMenu" items="{oView1>/itemCargArea}" width="10rem">
+		<columns>
+			<Column>
+				<Text text="{i18n>cargDaAr}"/>
+			</Column>
+		</columns>
+		<dragDropConfig>
+			<dnd:DragInfo sourceAggregation="items"/>
+			<dnd:DropInfo drop="moverParaClassDeRisco"/>
+		</dragDropConfig>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{oView1>SOBID}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

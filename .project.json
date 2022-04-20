@@ -1,0 +1,6 @@
+{
+  "deploy": {
+    "destination": "MB1",
+    "name": "ZIPAR"
+  }
+}
